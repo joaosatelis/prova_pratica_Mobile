@@ -55,7 +55,7 @@ class Pokemon implements RegistravelNaPokedex {
 
   void evoluir() {
     if (proximaEvolucao != null && _nivel >= nivelEvolucao) {
-      print("O $nome evoluiu para $proximaEvolucao!");
+      print("=> $nome evoluiu para $proximaEvolucao!");
       nome = proximaEvolucao!;
       proximaEvolucao = null;
       _hpMaximo += 20;
@@ -66,7 +66,7 @@ class Pokemon implements RegistravelNaPokedex {
   int calcularAtaqueBase() => _nivel;
 
   void exibirFicha() {
-    print("Pokemon: $nome (#$numero) | Tipo: $tipo | Level: $_nivel | HP: $_hpAtual/$_hpMaximo | Capturado: $capturado");
+    print("[$numero] $nome | Tipo: $tipo | Lvl: $_nivel | HP: $_hpAtual/$_hpMaximo | Cap: $capturado | Fav: $favorito");
   }
 
   @override void marcarComoVisto() => visto = true;
@@ -76,25 +76,25 @@ class Pokemon implements RegistravelNaPokedex {
 }
 
 class PokemonFogo extends Pokemon {
-  PokemonFogo({required int numero, required String nome, required int nivel, required int hpMaximo, String? prox, int nivEv = 0})
-      : super(numero: numero, nome: nome, tipo: "Fogo", nivel: nivel, hpMaximo: hpMaximo, proximaEvolucao: prox, nivelEvolucao: nivEv);
+  PokemonFogo({required super.numero, required super.nome, required super.nivel, required super.hpMaximo, String? prox, int nivEv = 0})
+      : super(tipo: "Fogo", proximaEvolucao: prox, nivelEvolucao: nivEv);
   
   @override int calcularAtaqueBase() => nivel * 3;
   @override void exibirFicha() { stdout.write("[FOGO] "); super.exibirFicha(); }
 }
 
 class PokemonAgua extends Pokemon {
-  PokemonAgua({required int numero, required String nome, required int nivel, required int hpMaximo, String? prox, int nivEv = 0})
-      : super(numero: numero, nome: nome, tipo: "Agua", nivel: nivel, hpMaximo: hpMaximo, proximaEvolucao: prox, nivelEvolucao: nivEv);
+  PokemonAgua({required super.numero, required super.nome, required super.nivel, required super.hpMaximo, String? prox, int nivEv = 0})
+      : super(tipo: "Agua", proximaEvolucao: prox, nivelEvolucao: nivEv);
   
   @override int calcularAtaqueBase() => (nivel * 2) + 10;
   @override void exibirFicha() { stdout.write("[AGUA] "); super.exibirFicha(); }
 }
 
 class PokemonEletrico extends Pokemon {
-  PokemonEletrico({required int numero, required String nome, required int nivel, required int hpMaximo, String? prox, int nivEv = 0})
-      : super(numero: numero, nome: nome, tipo: "Eletrico", nivel: nivel, hpMaximo: hpMaximo, proximaEvolucao: prox, nivelEvolucao: nivEv);
+  PokemonEletrico({required super.numero, required super.nome, required super.nivel, required super.hpMaximo, String? prox, int nivEv = 0})
+      : super(tipo: "Eletrico", proximaEvolucao: prox, nivelEvolucao: nivEv);
   
   @override int calcularAtaqueBase() => (nivel * 2) + 15;
-  @override void exibirFicha() { stdout.write("[ELETRICO] "); super.exibirFicha(); }
+  @override void exibirFicha() { stdout.write("[ELET] "); super.exibirFicha(); }
 }
