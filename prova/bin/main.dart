@@ -6,7 +6,6 @@ void simularTurno(Pokemon atacante, Pokemon defensor, Habilidade hab) {
   hab.usar(atacante, defensor);
   print("-> HP restante do ${defensor.nome}: ${defensor.hpAtual}");
   
-  // Regra da Questão 8: indicar se o defensor foi derrotado
   if (defensor.hpAtual == 0) {
     print("-> ${defensor.nome} foi derrotado!\n");
   } else {
