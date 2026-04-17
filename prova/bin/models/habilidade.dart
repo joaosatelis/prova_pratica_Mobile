@@ -18,9 +18,9 @@ class ChoqueDoTrovao extends Habilidade {
       int dano = usuario.calcularAtaqueBase() + 5;
       usuario.energia -= custoEnergia;
       alvo.receberDano(dano);
-      print("${usuario.nome} usou $nome! Dano: $dano");
+      print("${usuario.nome} usou $nome. Dano: $dano");
     } else {
-      print("${usuario.nome} está sem energia para $nome!");
+      print("${usuario.nome} sem energia para $nome.");
     }
   }
 }
@@ -34,7 +34,7 @@ class JatoDAgua extends Habilidade {
       int dano = usuario.calcularAtaqueBase() + 3;
       usuario.energia -= custoEnergia;
       alvo.receberDano(dano);
-      print("${usuario.nome} usou $nome! Dano: $dano");
+      print("${usuario.nome} usou $nome. Dano: $dano");
     }
   }
 }
@@ -48,7 +48,7 @@ class LancaChamas extends Habilidade {
       int dano = usuario.calcularAtaqueBase() + 7;
       usuario.energia -= custoEnergia;
       alvo.receberDano(dano);
-      print("${usuario.nome} usou $nome! Dano: $dano");
+      print("${usuario.nome} usou $nome. Dano: $dano");
     }
   }
 }
