@@ -4,13 +4,20 @@ import 'models/habilidade.dart';
 
 void simularTurno(Pokemon atacante, Pokemon defensor, Habilidade hab) {
   hab.usar(atacante, defensor);
-  print("-> HP restante do ${defensor.nome}: ${defensor.hpAtual}\n");
+  print("-> HP restante do ${defensor.nome}: ${defensor.hpAtual}");
+  
+  // Regra da Questão 8: indicar se o defensor foi derrotado
+  if (defensor.hpAtual == 0) {
+    print("-> ${defensor.nome} foi derrotado!\n");
+  } else {
+    print("");
+  }
 }
 
 void main() {
   var dex = Pokedex();
 
-  // populando a pokedex
+  // populando a pokedex questão 12, pelo menos 8 pokémons de 3 tipos
   dex.adicionarPokemon(PokemonFogo(numero: 4, nome: "Charmander", nivel: 15, hpMaximo: 50, prox: "Charmeleon", nivEv: 16));
   dex.adicionarPokemon(PokemonAgua(numero: 7, nome: "Squirtle", nivel: 10, hpMaximo: 45));
   dex.adicionarPokemon(PokemonEletrico(numero: 25, nome: "Pikachu", nivel: 20, hpMaximo: 40));
@@ -44,6 +51,13 @@ void main() {
   print("\nAcima do lvl 15:");
   for (var p in dex.listarAcimaDoNivel(15)) { print("- ${p.nome} (Lvl: ${p.nivel})"); }
 
+  // Filtros
+  print("\nCapturados:");
+  for (var p in dex.listarCapturados()) { print("- ${p.nome}"); }
+
+  print("\nQue podem evoluir:");
+  for (var p in dex.listarQuePodemEvoluir()) { print("- ${p.nome}"); }
+
   print("\n--- BATALHAS ---");
   var atk1 = dex.buscarPorNumero(25)!; 
   var def1 = dex.buscarPorNumero(7)!;  
@@ -52,6 +66,10 @@ void main() {
   var atk2 = dex.buscarPorNumero(58)!; 
   var def2 = dex.buscarPorNumero(54)!; 
   simularTurno(atk2, def2, LancaChamas());
+
+  var atk3 = dex.buscarPorNumero(54)!; // Psyduck
+  var def3 = dex.buscarPorNumero(37)!; // Vulpix
+  simularTurno(atk3, def3, JatoDAgua());
 
   print("--- CONSULTAS (LAMBDAS) ---");
   print("HP < 30:");
